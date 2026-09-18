@@ -1,0 +1,63 @@
+slug: acme_denim
+name: ACME Denim
+tone:
+  voice: "confident, dry, zero hype; short sentences; no exclamation marks"
+  person: second
+  reading_level_max: 8.0
+  banned_phrases: ["must-have", "game-changer", "obsessed", "literally"]
+  preferred_phrases: ["built to last", "raw selvedge", "cut for movement"]
+  emoji_allowed: true
+palette_hex: ["#1B2A41", "#C9C2B6", "#0E0E0E", "#7D8CA3"]
+palette_tolerance_de: 18
+logo_uri: s3://fcf-assets/brand/acme/logo.png
+claims:
+  forbid_absolute: true
+  forbid_health_claims: true
+  sustainability_requires_cert: true
+  allowed_certifications: ["GOTS", "OEKO-TEX"]
+  forbid_competitor_mentions: ["Levi's", "Nudie", "APC"]
+channels:
+  shopify:
+    title_max: 70
+    body_max: 1800
+    emoji_max: 0
+    cta_required: false
+    aspect: "1:1"
+    min_width: 2048
+    watermark: false
+    alt_text_required: true
+  tiktok:
+    title_max: 150
+    body_max: 150
+    hashtags_min: 3
+    hashtags_max: 6
+    emoji_max: 3
+    cta_required: true
+    aspect: "9:16"
+    min_width: 1080
+    duration_s: [9, 30]
+    subtitles: burn
+    watermark: true
+    loudness_lufs: -14
+  instagram_reel:
+    title_max: 125
+    body_max: 2200
+    hashtags_min: 5
+    hashtags_max: 12
+    emoji_max: 5
+    cta_required: true
+    aspect: "9:16"
+    duration_s: [7, 45]
+    subtitles: burn
+    watermark: true
+  instagram_post:
+    title_max: 125
+    body_max: 2200
+    hashtags_min: 5
+    hashtags_max: 12
+    emoji_max: 5
+    aspect: "4:5"
+    min_width: 1080
+    watermark: false
+    alt_text_required: true
+locales: ["en", "uk"]

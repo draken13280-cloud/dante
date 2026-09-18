@@ -1,0 +1,28 @@
+services:
+  api:
+    build: .
+    command: uvicorn fcf.api.app:app --host 0.0.0.0 --port 8000
+    env_file: .env
+    ports: ["8000:8000"]
+    depends_on: [postgres, redis, minio]
+  worker:
+    build: .
+    command: arq fcf.worker.main.WorkerSettings
+    env_file: .env
+    depends_on: [postgres, redis, minio]
+    deploy:
+      resources:
+        limits: {cpus: "2.0", memory: 3G}
+  postgres:
+    image: postgres:16
+    environment: {POSTGRES_USER: fcf, POSTGRES_PASSWORD: fcf, POSTGRES_DB: fcf}
+    volumes: [pgdata:/var/lib/postgresql/data]
+    healthcheck: {test: ["CMD-SHELL", "pg_isready -U fcf"], interval: 5s}
+  redis:
+    image: redis:7-alpine
+  minio:
+    image: minio/minio
+    command: server /data --console-address ":9001"
+    environment: {MINIO_ROOT_USER: minio, MINIO_ROOT_PASSWORD: minio12345}
+    volumes: [miniodata:/data]
+volumes: {pgdata: , miniodata: }
